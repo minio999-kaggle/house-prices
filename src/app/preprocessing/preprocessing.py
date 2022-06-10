@@ -62,6 +62,8 @@ def apply_preprocessing(df):
     Retruns:
         pandas.DataFrame
     '''
+    # since some columns have to much NaN we will drop them here
+    df = df.drop(columns=['Alley', 'PoolQC', 'Fence', 'MiscFeature'])
     df = encoding_values(df)
     df = impute_values(df)
     df = scaling_values(df)
@@ -74,5 +76,6 @@ def get_df():
         pandas.DataFrame
     '''
     df = pd.read_csv(PATH)
+    df = df.drop(columns=['Alley', 'PoolQC', 'Fence', 'MiscFeature'])
     df = apply_preprocessing(df)
     return df
