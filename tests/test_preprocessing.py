@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from app.preprocessing import apply_preprocessing
 
-def test_transorm_data():
+def test_apply_preprocessing():
     """
     Test apply_preprocessing function
     """
