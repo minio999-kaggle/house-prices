@@ -40,7 +40,7 @@ spec:
         def imageName = "minio999-kaggle-houes-prices-${BRANCH_NAME}"
         def devBranch = "dev"
         def testsBranch = "feature/tests"
-        def preprocessingBranch = "feature/preprocessing"
+        def preprocessingBranch = "feature/preproccessing"
     }
 
     stages {
