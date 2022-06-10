@@ -63,8 +63,8 @@ def apply_preprocessing(df):
         pandas.DataFrame
     '''
     df = encoding_values(df)
-    df = scaling_values(df)
     df = impute_values(df)
+    df = scaling_values(df)
     return df
 
 def get_df():
