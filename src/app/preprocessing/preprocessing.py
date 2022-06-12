@@ -76,6 +76,5 @@ def get_df():
         pandas.DataFrame
     '''
     df = pd.read_csv(PATH)
-    df = df.drop(columns=['Alley', 'PoolQC', 'Fence', 'MiscFeature'])
     df = apply_preprocessing(df)
     return df
