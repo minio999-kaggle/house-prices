@@ -4,7 +4,7 @@ Main module for preprocessing.
 import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder
 from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
 
 PATH = '../data/train.csv'
 
@@ -45,7 +45,7 @@ def scaling_values(df):
         pandas.DataFrame
     '''
 
-    scaler = StandardScaler()
+    scaler = MinMaxScaler()
     x_train = df.drop(['Id', 'SalePrice'], axis=1)
     scaler.fit(x_train)
     scaled_data = scaler.transform(x_train)
