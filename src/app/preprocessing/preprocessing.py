@@ -6,7 +6,7 @@ from sklearn.preprocessing import OrdinalEncoder
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import MinMaxScaler
 
-PATH = '../data/train.csv'
+PATH = './data/train.csv'
 
 def encoding_values(df):
     '''
