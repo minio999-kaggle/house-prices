@@ -29,7 +29,7 @@ def main():
         X_train, X_test = X.loc[train_index], X.loc[test_index]
         y_train, y_test = y.loc[train_index], y.loc[test_index]
 
-        reg = CatBoostRegressor()
+        reg = CatBoostRegressor(depth=7, iterations=1500, learning_rate = 0.025, logging_level='Silent')
 
         reg.fit(X_train, y_train)
 
