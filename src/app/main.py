@@ -2,8 +2,8 @@
 Main module for application.
 '''
 from sklearn.model_selection import KFold
-from catboost import CatBoostRegressor
 from sklearn.metrics import mean_squared_error
+from catboost import CatBoostRegressor
 import numpy as np
 from .preprocessing import get_df
 
@@ -29,14 +29,19 @@ def main():
         X_train, X_test = X.loc[train_index], X.loc[test_index]
         y_train, y_test = y.loc[train_index], y.loc[test_index]
 
-        reg = CatBoostRegressor(depth=7, iterations=1500, learning_rate = 0.025, logging_level='Silent')
+        reg = CatBoostRegressor(
+            depth=7,
+            iterations=1500,
+            learning_rate = 0.025,
+            logging_level='Silent'
+            )
 
         reg.fit(X_train, y_train)
 
         y_predict = reg.predict(X_test)
 
         acc_score = np.sqrt(mean_squared_error(y_test, y_predict))
-        
+
         print(acc_score)
 
         scores.append(acc_score)
