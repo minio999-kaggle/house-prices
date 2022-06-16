@@ -137,4 +137,4 @@ dmypy.json
 .bash_history
 
 # catboost 
-.catboost_info
+catboost_info/*
