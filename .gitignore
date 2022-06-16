@@ -135,3 +135,6 @@ dmypy.json
 .jupyter
 .local
 .bash_history
+
+# catboost 
+catboost_info/*

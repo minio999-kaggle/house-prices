@@ -4,9 +4,9 @@ Main module for preprocessing.
 import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder
 from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
 
-PATH = '../data/train.csv'
+PATH = './data/train.csv'
 
 def encoding_values(df):
     '''
@@ -45,7 +45,7 @@ def scaling_values(df):
         pandas.DataFrame
     '''
 
-    scaler = StandardScaler()
+    scaler = MinMaxScaler()
     x_train = df.drop(['Id', 'SalePrice'], axis=1)
     scaler.fit(x_train)
     scaled_data = scaler.transform(x_train)
@@ -62,6 +62,8 @@ def apply_preprocessing(df):
     Retruns:
         pandas.DataFrame
     '''
+    # since some columns have to much NaN we will drop them here
+    df = df.drop(columns=['Alley', 'PoolQC', 'Fence', 'MiscFeature'])
     df = encoding_values(df)
     df = impute_values(df)
     df = scaling_values(df)
