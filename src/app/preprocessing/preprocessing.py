@@ -3,7 +3,6 @@ Main module for preprocessing.
 '''
 import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder
-from sklearn.preprocessing import MinMaxScaler
 from sklearn.impute import KNNImputer
 from sklearn.preprocessing import RobustScaler
 
