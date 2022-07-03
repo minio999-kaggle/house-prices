@@ -3,8 +3,8 @@ Main module for preprocessing.
 '''
 import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder
-from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import MinMaxScaler
+from sklearn.impute import KNNImputer
 
 PATH = './data/train.csv'
 
@@ -30,7 +30,7 @@ def impute_values(df):
     Returns:
         pandas.DataFrame
     '''
-    imputer = SimpleImputer()
+    imputer = KNNImputer(n_neighbors=20)
     imputer.fit(df)
     imputed_df = pd.DataFrame(imputer.transform(df))
     imputed_df.columns = df.columns
