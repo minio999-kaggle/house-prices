@@ -66,13 +66,6 @@ spec:
         }
 
         stage('testing') {
-            when {
-                anyOf {
-                    expression { env.BRANCH_NAME == devBranch }
-                    expression { env.BRANCH_NAME == testsBranch }
-                    expression { env.BRANCH_NAME == preprocessingBranch }
-                }
-            }
             steps {
                 script {
                     container.inside("-u root --entrypoint=\'\'") {

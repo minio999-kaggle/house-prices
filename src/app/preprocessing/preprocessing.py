@@ -3,8 +3,8 @@ Main module for preprocessing.
 '''
 import pandas as pd
 from sklearn.preprocessing import OrdinalEncoder
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.impute import KNNImputer
+from sklearn.preprocessing import RobustScaler
 
 PATH = './data/train.csv'
 
@@ -30,7 +30,7 @@ def impute_values(df):
     Returns:
         pandas.DataFrame
     '''
-    imputer = SimpleImputer()
+    imputer = KNNImputer(n_neighbors=20)
     imputer.fit(df)
     imputed_df = pd.DataFrame(imputer.transform(df))
     imputed_df.columns = df.columns
@@ -45,7 +45,7 @@ def scaling_values(df):
         pandas.DataFrame
     '''
 
-    scaler = MinMaxScaler()
+    scaler = RobustScaler()
     x_train = df.drop(['Id', 'SalePrice'], axis=1)
     scaler.fit(x_train)
     scaled_data = scaler.transform(x_train)
